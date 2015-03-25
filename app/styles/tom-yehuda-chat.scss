@@ -1,0 +1,29 @@
+$dark-gray: #262626;
+$ember-red: #FF523B;
+
+.tom-yehuda-chat {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
+  background-color: $dark-gray;
+  color: $ember-red;
+  h1 {
+    text-align: center;
+  }
+  .visitor {
+    img  {
+      width: 95%;
+      padding: 5%;
+    }
+  }
+  .visitor-2 {
+    img  {
+      width: 30px;
+      padding: 5px;
+    }
+  }
+}
