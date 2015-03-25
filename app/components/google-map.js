@@ -13,9 +13,13 @@ export default Ember.Component.extend({
     scaleControl: false
   },
 
+  latLng: function () {
+    return new google.maps.LatLng(this.get('hugeLat'), this.get('hugeLng'));
+  }.property(),
+
   mapOptions: function () {
     var options = this.get('staticOptions');
-    options.center = new google.maps.LatLng(this.get('hugeLat'), this.get('hugeLng'));
+    options.center = this.get('latLng');
     return options;
   }.property(),
 
@@ -26,6 +30,20 @@ export default Ember.Component.extend({
 
   initialize: function () {
     this.set('map', this.get('map'));
-  }.on('didInsertElement')
+    this.addMarker();
+  }.on('didInsertElement'),
+
+  addMarker: function () {
+    var _this = this;
+    var map = this.get('map');
+    var marker = new google.maps.Marker({
+        position: this.get('latLng'),
+        animation: google.maps.Animation.DROP,
+        map: map,
+        title: 'Huge'
+    });
+  }
+
+
 
 });
