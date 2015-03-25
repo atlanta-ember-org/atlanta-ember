@@ -6,12 +6,17 @@ export default Ember.Component.extend({
   hugeLng: -84.385605, // should really get passed in
 
   staticOptions: {
-    zoom: 8,
+    zoom: 13,
     scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false
   },
+
+  initialize: function () {
+    this.set('map', this.get('map'));
+    this.addMarker();
+  }.on('didInsertElement'),
 
   latLng: function () {
     return new google.maps.LatLng(this.get('hugeLat'), this.get('hugeLng'));
@@ -28,11 +33,6 @@ export default Ember.Component.extend({
     return new google.maps.Map(element, this.get('mapOptions'));
   }.property(),
 
-  initialize: function () {
-    this.set('map', this.get('map'));
-    this.addMarker();
-  }.on('didInsertElement'),
-
   addMarker: function () {
     var _this = this;
     var map = this.get('map');
@@ -40,10 +40,8 @@ export default Ember.Component.extend({
         position: this.get('latLng'),
         animation: google.maps.Animation.DROP,
         map: map,
-        title: 'Huge'
+        title: 'Huge',
+        icon: '/assets/images/ember-pointer-small.png'
     });
   }
-
-
-
 });
