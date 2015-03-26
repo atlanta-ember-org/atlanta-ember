@@ -1,0 +1,51 @@
+$dark-gray: #262626;
+$ember-red: #FF523B;
+
+.tom-yehuda-chat {
+  div.row {
+    margin-left: 0;
+    margin-right: 0;
+    div {
+      padding: 0;
+    }
+  }
+  width: 100%;
+  background-color: $dark-gray;
+  color: $ember-red;
+  h1 {
+    text-align: center;
+  }
+  .visitor {
+    img  {
+      width: 95%;
+      padding: 5%;
+      &.ember-logo {
+      }
+    }
+  }
+  .visitor-2 {
+    img  {
+      width: 30px;
+      padding: 5px;
+    }
+  }
+  .google-map {
+    width: 100%;
+    height: 400px;
+  }
+  .details {
+    margin-top: 20px;
+    .row {
+      margin-top: 10px;
+      font-size: 20px;
+      div:first-of-type {
+        text-align: right;
+      }
+    }
+  }
+  .sponsors {
+    img {
+      width: 100px;
+    }
+  }
+}
