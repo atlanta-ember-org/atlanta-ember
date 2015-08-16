@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['google-map'],
-  hugeLat: 33.792418, // should really get passed in
-  hugeLng: -84.385605, // should really get passed in
+  hugeLat: 33.7590866, // should really get passed in
+  hugeLng: -84.3317487, // should really get passed in
 
   staticOptions: {
     zoom: 13,
