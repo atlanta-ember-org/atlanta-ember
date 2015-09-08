@@ -7,7 +7,6 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('landing', { "path": '/' });
-  this.route('tom-yehuda-chat'); // temporary landing page
 });
 
 export default Router;

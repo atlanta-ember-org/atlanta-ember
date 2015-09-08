@@ -1,9 +1,16 @@
 import Ember from 'ember';
 
+// must give some dimentions to the dom element
+// .googl-map {
+//   width: 100px;
+//   height: 100px;
+// }
+
+// location should respond to lat, lon, and name
+// {{google-map location=content.venue}}
+
 export default Ember.Component.extend({
   classNames: ['google-map'],
-  hugeLat: 33.7590866, // should really get passed in
-  hugeLng: -84.3317487, // should really get passed in
 
   staticOptions: {
     zoom: 13,
@@ -14,33 +21,30 @@ export default Ember.Component.extend({
   },
 
   initialize: function () {
-    this.set('map', this.get('map'));
-    this.addMarker();
+    this.drawMap();
   }.on('didInsertElement'),
 
-  latLng: function () {
-    return new google.maps.LatLng(this.get('hugeLat'), this.get('hugeLng'));
-  }.property(),
-
-  mapOptions: function () {
-    var options = this.get('staticOptions');
-    options.center = this.get('latLng');
-    return options;
-  }.property(),
-
-  map: function () {
+  initializeMap: function (latLng) {
     var element = document.getElementById(this.get('elementId'));
-    return new google.maps.Map(element, this.get('mapOptions'));
-  }.property(),
+    var options = this.get('staticOptions');
+    options.center = latLng;
+    return new google.maps.Map(element, options);
+  },
 
-  addMarker: function () {
+  drawMap: function () {
+    var latLng = new google.maps.LatLng(this.get('location.lat'), this.get('location.lon'));
+    var map = this.initializeMap(latLng);
+    this.addMarker(map, latLng);
+  }.observes('location.lat', 'location.lon'),
+
+  addMarker: function (map, latLng) {
     var _this = this;
-    var map = this.get('map');
+    var name = this.get('location.name');
     var marker = new google.maps.Marker({
-        position: this.get('latLng'),
+        position: latLng,
         animation: google.maps.Animation.DROP,
         map: map,
-        title: 'Huge',
+        title: name,
         icon: '/assets/images/ember-pointer-small.png'
     });
   }

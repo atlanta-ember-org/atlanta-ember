@@ -2,13 +2,15 @@
 
 module.exports = function(environment) {
   var ENV = {
+    domain: 'https://atlanta-ember-backend-app.herokuapp.com',
+    // domain: 'http://localhost:3000',
     modulePrefix: 'atlantaember',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com *.gstatic.com",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com *.gstatic.com *maps.google.com/maps-api-v3/api/*",
       'font-src': "'self' *.gstatic.com ",
       'connect-src': "'self' ",
       'img-src': "'self' data: *.googleapis.com *.gstatic.com ",
