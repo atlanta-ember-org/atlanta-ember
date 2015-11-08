@@ -1,4 +1,24 @@
 <div id='landing'>
   <h1>Atlanta Ember</h1>
-  {{google-map location=content.venue}}
+  {{google-map location=nextEvent.venue}}
 </div>
+
+
+<ul>
+  <li>{{nextEvent.name}}</li>
+  <li>{{{nextEvent.description}}}</li>
+  <li>{{nextEvent.startsAt}}</li>
+</ul>
+
+
+<ul>
+  {{#each nextEvent.topics as |topic|}}
+    <li>{{topic.name}}</li>
+  {{/each}}
+</ul>
+
+
+{{input type="text" value=topicName placeholder="Topic Name"}}
+{{textarea value=topicDescription placeholder="Topic Description"}}
+
+<button type="button" name="button" {{action 'createTopic'}}>Submit</button>

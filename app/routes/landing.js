@@ -2,33 +2,32 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model: function () {
-    let self = this;
-    return new Promise( function (resolve) {
-      let nextEvent;
-      self.store.findAll('event').then( function (events) {
-        events.forEach( function (event) {
-          if (self.isNextEvent(event, nextEvent)) {
-            nextEvent = event;
-          }
-        });
-
-        resolve(nextEvent);
-      });
-    });
+  model () {
+    return this.store.findAll('event');
   },
 
-  isNextEvent: function (event, otherEvent) {
-    let eventStartsAt = event.get('startsAt');
-    let isInFuture = eventStartsAt > Date.now();
+  actions: {
+    createTopic () {
+      let controller = this.get('controller');
 
-    let soonerThanOtherEvent;
-    if (otherEvent) {
-      soonerThanOtherEvent = eventStartsAt < otherEvent.get('startsAt');
-    } else {
-      soonerThanOtherEvent = true;
+      let topic = this.store.createRecord('topic', {
+        event: controller.get('nextEvent'),
+        name: controller.get('topicName'),
+        description: controller.get('topicDescription')
+      });
+
+      topic.save().then( () => {
+        alert('saved');
+      });
+    },
+
+    vote () {
+      // make ajax call to ?
+
+      // {
+      //   valence: 0 // 0 or 1,
+      //   topic: 1 // topic id
+      // }
     }
-
-    return isInFuture && soonerThanOtherEvent;
   }
 });
