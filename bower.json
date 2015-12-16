@@ -10,14 +10,9 @@
     "ember-qunit-notifications": "0.1.0",
     "ember-resolver": "~0.1.20",
     "jquery": "^1.11.3",
-<<<<<<< HEAD
-    "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0",
     "moment": ">= 2.8.0",
-    "moment-timezone": ">= 0.1.0"
-=======
+    "moment-timezone": ">= 0.1.0",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "qunit": "~1.20.0"
->>>>>>> 00b0287381c0d407af7bbcd32f14f309e16a0ce5
   }
 }
