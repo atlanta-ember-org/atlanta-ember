@@ -6,8 +6,8 @@ module.exports = function(environment) {
     // domain: 'http://localhost:3000',
     modulePrefix: 'atlantaember',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    baseURL: 'atl-ember-staging/',
+    locationType: 'hash',
     contentSecurityPolicy: {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com *.gstatic.com *maps.google.com/maps-api-v3/api/*",

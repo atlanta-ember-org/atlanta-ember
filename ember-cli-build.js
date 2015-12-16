@@ -3,7 +3,12 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    fingerprint: {
+      prepend: "https://s3-us-west-2.amazonaws.com/atl-ember-staging/"
+    },
+    dotEnv: {
+      clientAllowedKeys: ['AWS_KEY', 'AWS_SECRET', 'PRODUCTION_DISTRIBUTION']
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
