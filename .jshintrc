@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "google"
+    "google",
+    "moment"
   ],
   "browser": true,
   "boss": true,
