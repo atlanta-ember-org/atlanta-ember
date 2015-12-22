@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    domain: 'https://atlanta-ember-backend-app.herokuapp.com',
-    // domain: 'http://localhost:3000',
+    // domain: 'https://atlanta-ember-backend-app.herokuapp.com',
+    domain: 'http://localhost:3000',
     modulePrefix: 'atlantaember',
     environment: environment,
     baseURL: 'atl-ember-staging/',

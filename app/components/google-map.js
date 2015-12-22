@@ -38,9 +38,8 @@ export default Ember.Component.extend({
   }.observes('location.lat', 'location.lon'),
 
   addMarker: function (map, latLng) {
-    var _this = this;
     var name = this.get('location.name');
-    var marker = new google.maps.Marker({
+    new google.maps.Marker({
         position: latLng,
         animation: google.maps.Animation.DROP,
         map: map,
