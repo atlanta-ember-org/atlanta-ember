@@ -12,7 +12,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com *.gstatic.com *maps.google.com/maps-api-v3/api/*",
       'font-src': "'self' *.gstatic.com ",
-      'connect-src': "'self' https://atlanta-ember-backend-app.herokuapp.com",
+      'connect-src': "'self' https://atlanta-ember-backend-app.herokuapp.com http://localhost:3000",
       'img-src': "'self' data: *.googleapis.com *.gstatic.com 'http://photos2.meetupstatic.com/photos' http://photos2.meetupstatic.com",
       'style-src': "'self' 'unsafe-inline' *.googleapis.com",
       'media-src': "'self'"
