@@ -12,5 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{navs/top-nav}}`);
 
-  assert.equal(this.$(".navbar-header a").text().trim(), 'Login');
+  assert.equal(this.$().text().trim(), 'Toggle navigation');
 });
