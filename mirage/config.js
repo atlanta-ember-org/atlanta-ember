@@ -1,6 +1,7 @@
 export default function() {
 
   this.get('http://localhost:3000/topics');
+  this.post('http://localhost:3000/topics');
 
   // These comments are here to help you get started. Feel free to delete them.
 

@@ -43,3 +43,23 @@ test('has a list of topics', function(assert) {
     assert.ok(doesInclude(string, topicNames));
   });
 });
+
+test('can create a new topic', function (assert) {
+  visit('/topics');
+
+  fillIn('.new-topic .name', 'some name');
+  click ('.new-topic .submit');
+
+  andThen(function() {
+    let string = this.$('.topics li').text();
+    assert.ok(doesInclude(string, ['some name']));
+  });
+
+  fillIn('.new-topic .name', 'some other name');
+  click ('.new-topic .submit');
+
+  andThen(function() {
+    let string = this.$('.topics li').text();
+    assert.ok(doesInclude(string, ['some name', 'some other name']));
+  });
+});

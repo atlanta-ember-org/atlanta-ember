@@ -1,3 +1,16 @@
 <h1 class='page-title'>Topics</h1>
 
-{{topics/list-container topics=model}}
+<div class="row">
+  <div class="col-lg-6 col-md-8">
+    {{topics/list-container topics=model}}
+  </div>
+  <div class="col-lg-6 col-md-4">
+    <form {{action "createTopic" newTopic on='submit'}} class="new-topic">
+      {{input type="text" value=newTopic.name placeholder="Topic Name" class='name'}}
+      {{textarea value=newTopic.description placeholder="Topic Description" class='description'}}
+
+      <button class="btn btn-primary btn-block submit" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
