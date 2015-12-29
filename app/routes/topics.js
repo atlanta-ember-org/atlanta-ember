@@ -11,7 +11,7 @@ export default Ember.Route.extend({
       let controller =  this.get('controller');
       topic.save().then(function () {
         controller.replaceNewTopic();
-      });
+      }, function () {});
     }
   }
 });

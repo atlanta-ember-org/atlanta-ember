@@ -6,8 +6,19 @@
   </div>
   <div class="col-lg-6 col-md-4">
     <form {{action "createTopic" newTopic on='submit'}} class="new-topic">
-      {{input type="text" value=newTopic.name placeholder="Topic Name" class='name'}}
-      {{textarea value=newTopic.description placeholder="Topic Description" class='description'}}
+      <div class="row">
+        {{input type="text" value=newTopic.name placeholder="Topic Name" class='name'}}
+        {{#each newTopic.errors.name as |error|}}
+          {{error.message}}
+        {{/each}}
+      </div>
+
+      <div class="row">
+        {{textarea value=newTopic.description placeholder="Topic Description" class='description'}}
+        {{#each newTopic.errors.description as |error|}}
+          {{error.message}}
+        {{/each}}
+      </div>
 
       <button class="btn btn-primary btn-block submit" type="submit">Submit</button>
     </form>
