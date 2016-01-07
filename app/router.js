@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('landing', { "path": '/' });
   this.route('resources');
+  this.route('code-of-conduct');
 });
 
 export default Router;
