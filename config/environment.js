@@ -31,6 +31,9 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    }
     ENV.baseURL = '/';
     ENV.domain = '';
     // ENV.APP.LOG_RESOLVER = true;
