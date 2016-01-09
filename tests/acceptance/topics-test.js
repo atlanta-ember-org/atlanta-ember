@@ -63,3 +63,24 @@ test('can create a new topic', function (assert) {
     assert.ok(doesInclude(string, ['some name', 'some other name']));
   });
 });
+
+// test('it shows errors from server validations', function (assert) {
+//   const errors = {
+//           errors: [
+//             { detail: "can't be blank",
+//               source: {
+//                 pointer: "data/attributes/name"
+//               }
+//             }
+//           ]
+//         }
+
+//   visit('/topics');
+//   server.post('/topics', errors, 404);
+//   click ('.new-topic .submit');
+
+//   andThen(function() {
+//     let string = this.$('.topics').text();
+//     assert.ok(doesInclude(string, ["can't be blank"]));
+//   });
+// });
