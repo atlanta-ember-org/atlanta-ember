@@ -3,7 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'atlantaember',
-    environment: environment,
+    environment: environment || 'development',
     baseURL: 'atl-ember-staging/',
     locationType: 'hash',
     contentSecurityPolicy: {
@@ -30,7 +30,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV['ember-cli-mirage'] = {
-      enabled: false
+      enabled: true
     }
     ENV.baseURL = '/';
     ENV.domain = '';
