@@ -29,7 +29,6 @@ export default Component.extend({
   },
 
   onDidInitAttrs: on('didInitAttrs', function() {
-    debugger;
     if (!this.get('location')) {
       this.set('location', this.get('defaultLocation'));
     }
