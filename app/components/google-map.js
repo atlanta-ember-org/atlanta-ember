@@ -14,6 +14,12 @@ const { Component, observer, on, run: { schedule } } = Ember;
 export default Component.extend({
   classNames: ['google-map'],
 
+  // if the location isn't provided then use this as a fallback
+  defaultLocation: {
+    lat: 33.7590866,
+    lon: -84.3339374
+  },
+
   staticOptions: {
     zoom: 13,
     scrollwheel: false,
@@ -22,7 +28,14 @@ export default Component.extend({
     scaleControl: false
   },
 
-  initialize: on('didInsertElement', function () {
+  onDidInitAttrs: on('didInitAttrs', function() {
+    debugger;
+    if (!this.get('location')) {
+      this.set('location', this.get('defaultLocation'));
+    }
+  }),
+
+  onDidInsertElement: on('didInsertElement', function () {
     schedule('afterRender', () => {
       this.drawMap();
     });
