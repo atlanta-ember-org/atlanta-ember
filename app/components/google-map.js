@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { Component, observer, on, run: { schedule } } = Ember;
+
 // must give some dimentions to the dom element
 // .googl-map {
 //   width: 100px;
@@ -9,8 +11,14 @@ import Ember from 'ember';
 // location should respond to lat, lon, and name
 // {{google-map location=content.venue}}
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['google-map'],
+
+  // if the location isn't provided then use this as a fallback
+  defaultLocation: {
+    lat: 33.7590866,
+    lon: -84.3339374
+  },
 
   staticOptions: {
     zoom: 13,
@@ -20,9 +28,17 @@ export default Ember.Component.extend({
     scaleControl: false
   },
 
-  initialize: function () {
-    this.drawMap();
-  }.on('didInsertElement'),
+  onDidInitAttrs: on('didInitAttrs', function() {
+    if (!this.get('location')) {
+      this.set('location', this.get('defaultLocation'));
+    }
+  }),
+
+  onDidInsertElement: on('didInsertElement', function () {
+    schedule('afterRender', () => {
+      this.drawMap();
+    });
+  }),
 
   initializeMap: function (latLng) {
     var element = document.getElementById(this.get('elementId'));
@@ -31,11 +47,11 @@ export default Ember.Component.extend({
     return new google.maps.Map(element, options);
   },
 
-  drawMap: function () {
+  drawMap: observer('location.lat', 'location.lon', function() {
     var latLng = new google.maps.LatLng(this.get('location.lat'), this.get('location.lon'));
     var map = this.initializeMap(latLng);
     this.addMarker(map, latLng);
-  }.observes('location.lat', 'location.lon'),
+  }),
 
   addMarker: function (map, latLng) {
     var name = this.get('location.name');
