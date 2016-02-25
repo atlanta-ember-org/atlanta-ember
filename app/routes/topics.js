@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   model: function () {
-    return this.store.findAll('topic');
+    return this.store.findAll('event');
   },
 
   actions: {
