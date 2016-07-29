@@ -1,8 +1,10 @@
-import DS from 'ember-data';
+import RESTSerializer from 'ember-data/serializers/rest';
 import Ember from 'ember';
 
-export default DS.RESTSerializer.extend({
-  keyForAttribute: function(attr) {
-    return Ember.String.underscore(attr);
+const { underscore } = Ember.String;
+
+export default RESTSerializer.extend({
+  keyForAttribute(attr) {
+    return underscore(attr);
   }
 });

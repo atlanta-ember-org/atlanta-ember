@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, observer, on, run: { schedule } } = Ember;
+const { Component, observer, run: { schedule } } = Ember;
 
 // must give some dimentions to the dom element
 // .googl-map {
@@ -28,19 +28,21 @@ export default Component.extend({
     scaleControl: false
   },
 
-  onDidInitAttrs: on('didInitAttrs', function() {
+  init() {
+    this._super(...arguments);
     if (!this.get('location')) {
       this.set('location', this.get('defaultLocation'));
     }
-  }),
+  },
 
-  onDidInsertElement: on('didInsertElement', function () {
+  didInsertElement() {
+    this._super(...arguments);
     schedule('afterRender', () => {
       this.drawMap();
     });
-  }),
+  },
 
-  initializeMap: function (latLng) {
+  initializeMap(latLng) {
     var element = document.getElementById(this.get('elementId'));
     var options = this.get('staticOptions');
     options.center = latLng;
@@ -53,7 +55,7 @@ export default Component.extend({
     this.addMarker(map, latLng);
   }),
 
-  addMarker: function (map, latLng) {
+  addMarker(map, latLng) {
     var name = this.get('location.name');
     new google.maps.Marker({
         position: latLng,

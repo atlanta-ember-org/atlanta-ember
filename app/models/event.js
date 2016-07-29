@@ -1,13 +1,15 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
-export default DS.Model.extend({
-  name:                DS.attr('string', { defaultValue: '' }),
-  description:         DS.attr('string', { defaultValue: '' }),
-  originallyCreatedAt: DS.attr('date'),
-  yesRsvpCount:        DS.attr('number'),
-  startsAt:            DS.attr('date'),
-  meetupId:            DS.attr('string'),
-  eventUrl:            DS.attr('string'),
-  venue:               DS.belongsTo('venue'),
-  topics:              DS.hasMany('topic')
+export default Model.extend({
+  name:                attr('string', { defaultValue: '' }),
+  description:         attr('string', { defaultValue: '' }),
+  originallyCreatedAt: attr('date'),
+  yesRsvpCount:        attr('number'),
+  startsAt:            attr('date'),
+  meetupId:            attr('string'),
+  eventUrl:            attr('string'),
+  venue:               belongsTo('venue'),
+  topics:              hasMany('topic')
 });

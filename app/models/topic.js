@@ -1,7 +1,9 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 
-export default DS.Model.extend({
-  event: DS.belongsTo('event'),
-  name: DS.attr('string'),
-  description: DS.attr('string')
+export default Model.extend({
+  event: belongsTo('event'),
+  name: attr('string'),
+  description: attr('string')
 });
