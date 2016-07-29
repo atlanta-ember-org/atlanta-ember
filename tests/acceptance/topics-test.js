@@ -13,34 +13,23 @@ const doesInclude = function (string, substrings) {
   return statuses.indexOf(false) < 0;
 };
 
-moduleForAcceptance('Acceptance | topic');
+moduleForAcceptance('Acceptance | topic', function() {
 
-test('visiting /topics', function(assert) {
-  visit('/topics');
-
-  andThen(function() {
-    assert.equal(currentURL(), '/topics');
-  });
 });
 
-test('has a title', function(assert) {
-  visit('/topics');
-
-  andThen(function() {
-    assert.equal(this.$('h1.page-title').text().trim(), 'Topics');
-  });
-});
-
-test('has a list of topics', function(assert) {
-  visit('/topics');
-  const topicNames = server.createList('topic', 3)
-    .map(function (topic) {
+test('visit /topics', function(assert) {
+  const topicNames = server.createList('topic', 3).map((topic) => {
       return topic.name;
-    });
+  });
 
-  andThen(function() {
-    let string = this.$('.topics li').text();
-    assert.ok(doesInclude(string, topicNames));
+  visit('/topics');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/topics', 'it is the correct URL');
+    assert.equal(find('h1.page-title').text().trim(), 'Topics', 'it has the right header');
+
+    let content = find('.topics li').text();
+    assert.ok(doesInclude(content, topicNames));
   });
 });
 
@@ -50,16 +39,16 @@ test('can create a new topic', function (assert) {
   fillIn('.new-topic .name', 'some name');
   click ('.new-topic .submit');
 
-  andThen(function() {
-    let string = this.$('.topics li').text();
+  andThen(() => {
+    let string = find('.topics li').text();
     assert.ok(doesInclude(string, ['some name']));
   });
 
   fillIn('.new-topic .name', 'some other name');
   click ('.new-topic .submit');
 
-  andThen(function() {
-    let string = this.$('.topics li').text();
+  andThen(() => {
+    let string = find('.topics li').text();
     assert.ok(doesInclude(string, ['some name', 'some other name']));
   });
 });
