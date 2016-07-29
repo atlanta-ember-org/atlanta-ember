@@ -13,9 +13,7 @@ const doesInclude = function (string, substrings) {
   return statuses.indexOf(false) < 0;
 };
 
-moduleForAcceptance('Acceptance | topic', function() {
-
-});
+moduleForAcceptance('Acceptance | topic');
 
 test('visit /topics', function(assert) {
   const topicNames = server.createList('topic', 3).map((topic) => {

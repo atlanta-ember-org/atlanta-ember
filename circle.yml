@@ -7,8 +7,10 @@ machine:
 dependencies:
   pre:
     - npm install -g bower
-    - npm install
-    - bower install
+    - npm install -g phantomjs@2.1.1
+  override:
+    - npm i
+    - bower i
 
 ## Deployment settings
 deployment:
