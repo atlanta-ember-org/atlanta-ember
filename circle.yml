@@ -1,0 +1,12 @@
+## Customize dependencies
+dependencies:
+  pre:
+    - npm install
+    - bower install
+
+## Deployment settings
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: atlanta-ember-client
