@@ -8,6 +8,8 @@
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
     "pretender": "~1.1.0",
-    "Faker": "~3.1.0"
+    "Faker": "~3.1.0",
+    "hammer.js": "^2.0.8",
+    "matchMedia": "0.2.0"
   }
 }
