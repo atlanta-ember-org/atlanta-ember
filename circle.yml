@@ -7,7 +7,7 @@ machine:
 dependencies:
   pre:
     - npm install -g bower
-    - npm install -g phantomjs@2.1.1
+    - npm install -g phantomjs-prebuilt@2.1.1
     - bower install
 
 ## Deployment settings
