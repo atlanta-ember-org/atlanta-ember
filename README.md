@@ -1,5 +1,7 @@
 # Atlantaember
 
+[![CircleCI](https://circleci.com/gh/atlanta-ember-org/atlanta-ember.svg?style=svg)](https://circleci.com/gh/atlanta-ember-org/atlanta-ember)
+
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
