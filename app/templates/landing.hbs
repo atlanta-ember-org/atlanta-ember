@@ -1,6 +1,9 @@
 <div id="landing">
   <h1>Atlanta Ember</h1>
-  {{google-map location=nextEvent.venue}}
+  {{#leaflet-map lat=nextEvent.venue.lat long=nextEvent.venue.lon zoom=1}}
+    {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+  {{/leaflet-map}}
+  {{!-- {{google-map location=nextEvent.venue}} --}}
 </div>
 
 
