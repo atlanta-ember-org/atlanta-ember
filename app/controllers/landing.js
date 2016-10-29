@@ -1,16 +1,25 @@
 import Ember from 'ember';
+/* global L */
 
-export default Ember.Controller.extend({
+const { computed, Controller } = Ember;
+const { filter, sort } = computed;
 
-  upcomingEvents: Ember.computed.filter('model', function(record) { // filter by upcoming events
+export default Controller.extend({
+  defaultZoom: 14,
+  icon: L.icon({
+    iconUrl: '/assets/images/ember-pointer-small.png',
+    iconSize: [100, 100]
+  }),
+
+  upcomingEvents: filter('model', function(record) { // filter by upcoming events
     return moment(record.get('startsAt')).isAfter(moment().format());
   }),
 
-  sortedEvents: Ember.computed.sort('upcomingEvents', (a, b) => { // sort events by startsAt
+  sortedEvents: sort('upcomingEvents', (a, b) => { // sort events by startsAt
     return a.get('startsAt') - b.get('startsAt');
   }),
 
-  nextEvent: Ember.computed('sortedEvents', function() { // get next event
+  nextEvent: computed('sortedEvents', function() { // get next event
     return this.get('sortedEvents.firstObject');
   }),
 
