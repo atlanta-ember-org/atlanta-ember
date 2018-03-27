@@ -54,7 +54,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.domain = 'https://atlanta-ember-legacy-api.herokuapp.com';
+    ENV.domain = 'https://atlanta-ember-api-legacy.herokuapp.com';
   }
 
   return ENV;
